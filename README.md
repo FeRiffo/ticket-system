@@ -37,23 +37,8 @@ O sistema consiste em uma API REST em Java com Spring Boot e uma interface web e
 - Fetch API
 
 ## 📁 Estrutura do projeto
-ticket-system/
-├── backend/
-│ ├── src/
-│ │ ├── main/
-│ │ │ ├── java/com/ticketsystem/
-│ │ │ │ ├── controller/
-│ │ │ │ ├── dto/
-│ │ │ │ ├── exception/
-│ │ │ │ ├── model/
-│ │ │ │ ├── repository/
-│ │ │ │ └── service/
-│ │ │ └── resources/
-│ │ └── test/
-│ └── pom.xml
-└── frontend/
-├── index.html
-└── app.js
+<img width="180" height="278" alt="image" src="https://github.com/user-attachments/assets/cc2d1680-1ba2-4416-b188-db1106d201e9" />
+
 
 
 ## 🚀 Como executar o projeto
