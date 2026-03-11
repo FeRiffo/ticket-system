@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Tickets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .tickets-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .ticket-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #007bff;
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .ticket-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .ticket-status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-open {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .status-in_progress {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .status-closed {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .ticket-description {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .ticket-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .ticket-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .ticket-actions select {
+            width: auto;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-container select {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Gerenciamento de Tickets</h1>
+
+        <div id="alertContainer"></div>
+
+        <div class="form-container">
+            <h2>Criar Novo Ticket</h2>
+            <form id="ticketForm">
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input type="text" id="title" name="title" required minlength="3" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <textarea id="description" name="description" required minlength="10" maxlength="500"></textarea>
+                </div>
+                <button type="submit" id="submitBtn">Criar Ticket</button>
+            </form>
+        </div>
+
+        <div class="filter-container">
+            <select id="statusFilter">
+                <option value="ALL">Todos os status</option>
+                <option value="OPEN">Abertos</option>
+                <option value="IN_PROGRESS">Em Andamento</option>
+                <option value="CLOSED">Fechados</option>
+            </select>
+        </div>
+
+        <div id="ticketsContainer">
+            <div class="loading">Carregando tickets...</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

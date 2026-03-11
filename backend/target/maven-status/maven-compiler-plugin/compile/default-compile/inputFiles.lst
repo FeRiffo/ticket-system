@@ -1,0 +1,12 @@
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\controller\TicketController.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\repository\TicketRepository.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\service\TicketServiceImpl.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\TicketSystemApplication.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\service\TicketService.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\exception\TicketNotFoundException.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\model\Ticket.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\dto\StatusUpdateDTO.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\exception\GlobalExceptionHandler.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\model\TicketStatus.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\dto\TicketRequestDTO.java
+C:\Users\jorgi\Downloads\Teste Atile\backend\src\main\java\com\ticketsystem\dto\TicketResponseDTO.java
